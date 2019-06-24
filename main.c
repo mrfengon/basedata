@@ -11,9 +11,23 @@ int main(int argc, char const *argv[])
         "to file, 6 - load database from file, 7 - show "
         "group with max number of girls with max average\n"
     );
-    int command;
+    
     record* database[20];
     size_t current_size = 0;
+    unsigned num;
+
+    char surname[20];
+    char initials[5];
+    char gender;
+    int group;
+    int discrete;
+    int linal;
+    int mathan;
+    int pml;
+    int english;
+    int russian;
+
+    int command;
     scanf("%d", &command);
     switch (command)
     {
@@ -23,16 +37,6 @@ int main(int argc, char const *argv[])
         }
         break;
     case 1:
-        char surname[20];
-        char initials[5];
-        char gender;
-        int group;
-        int discrete;
-        int linal;
-        int mathan;
-        int pml;
-        bool english;
-        bool russian;
         printf("please input surname: ");
         scanf("%s", surname);
         printf("please input initials: ");
@@ -54,16 +58,15 @@ int main(int argc, char const *argv[])
         printf("please input russian: ");
         scanf("%d", &russian);
         database[current_size++] = create_record(
-            *surname, *initials, gender, group,
+            surname, initials, gender, group,
             discrete, linal, mathan,
-            pml, english, russian
+            pml, english == 1, russian == 1
         );
         break;
     case 2:
         /* code */
         break;
     case 3:
-        unsigned num;
         printf("enter num: ");
         scanf("%u", &num);
         if (num < current_size) {
@@ -77,7 +80,6 @@ int main(int argc, char const *argv[])
         }
         break;
     case 4:
-        unsigned num;
         printf("enter num: ");
         scanf("%u", &num);
         if (num < current_size) {
