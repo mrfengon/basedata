@@ -73,7 +73,7 @@ int main(int argc, char const *argv[]) {
                     &&
                     (avg_score(database[i]) == max_avg_score)
                 ) {
-                girls_with_max_avg_by_groups[i]++;
+                girls_with_max_avg_by_groups[database[i]->group]++;
             }
         }
         
