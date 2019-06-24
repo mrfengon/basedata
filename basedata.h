@@ -1,6 +1,8 @@
 #ifndef BASEDATA_H_
 #define BASEDATA_H_
 
+#include <stdbool.h>
+
 typedef struct record {
     char surname[20];
     char initials[5];
