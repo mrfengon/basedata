@@ -21,13 +21,13 @@ int main(int argc, char const *argv[])
     int russian;
 
     int command;
-    while (command != 8) {
+    while (command != 7) {
         printf(
-            "\n0 - print database, 1 - add rec, 2 - edit rec, "
-            "3 - delete rec, 4 - print rec, 5 - save database "
-            "to file, 6 - load database from file, 7 - show "
+            "\n0 - print database, 1 - add rec, "
+            "2 - delete rec, 3 - print rec, 4 - save database "
+            "to file, 5 - load database from file, 6 - show "
             "group with max number of girls with max average, "
-            "8 - exit\n"
+            "7 - exit\n"
         );
         scanf("%d", &command);
         switch (command)
@@ -65,9 +65,6 @@ int main(int argc, char const *argv[])
             );
             break;
         case 2:
-            /* code */
-            break;
-        case 3:
             printf("enter num: ");
             scanf("%u", &num);
             if (num < current_size) {
@@ -80,7 +77,7 @@ int main(int argc, char const *argv[])
                 printf("no such rec\n");
             }
             break;
-        case 4:
+        case 3:
             printf("enter num: ");
             scanf("%u", &num);
             if (num < current_size) {
@@ -89,13 +86,13 @@ int main(int argc, char const *argv[])
                 printf("no such rec\n");
             }
             break;
+        case 4:
+            /* code */
+            break;
         case 5:
             /* code */
             break;
         case 6:
-            /* code */
-            break;
-        case 7:
             /* code */
             break;
         }
