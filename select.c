@@ -16,7 +16,7 @@ int avg_score(record* rec) {
 int main(int argc, char const *argv[]) {
     if (argc < 2)
     {
-        printf("Please pass -f to print database or -p to perform query.");
+        printf("Please pass -f to print database or -p to perform query.\n");
         return 1;
     }
 
@@ -89,7 +89,7 @@ int main(int argc, char const *argv[]) {
         printf("Found group: %d\n", resulting_group);
 
     } else {
-        printf("Incorrect parameter.");
+        printf("Incorrect parameter.\n");
         return 1;
     }
     
