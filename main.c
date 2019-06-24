@@ -46,8 +46,12 @@ int main(int argc, char const *argv[])
             scanf("%s", initials);
             printf("please input gender: ");
             scanf(" %c", &gender);
-            printf("please input group: ");
+            printf("please input group (from 0 to 19): ");
             scanf("%d", &group);
+            if (group > 19 || group < 0) {
+                printf("Wrong group number. Stopping input.");
+                break;
+            }
             printf("please input discrete: ");
             scanf("%d", &discrete);
             printf("please input linal: ");
