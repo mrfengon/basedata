@@ -37,3 +37,34 @@ void print_record(record *rec) {
         rec->russian ? "pass" : "fail"
     );
 }
+
+void save_record_to_file(record *rec, FILE *file) {
+    fwrite(rec->surname, sizeof(char), 20, file);
+    fwrite(rec->initials, sizeof(char), 5, file);
+    fwrite(&(rec->gender), sizeof(char), 1, file);
+    fwrite(&(rec->group), sizeof(int), 1, file);
+    fwrite(&(rec->discrete), sizeof(int), 1, file);
+    fwrite(&(rec->linal), sizeof(int), 1, file);
+    fwrite(&(rec->mathan), sizeof(int), 1, file);
+    fwrite(&(rec->pml), sizeof(int), 1, file);
+    fwrite(&(rec->english), sizeof(bool), 1, file);
+    fwrite(&(rec->russian), sizeof(bool), 1, file);
+}
+
+record *load_record_from_file(FILE *file) {
+    record* rec = (record*) malloc(sizeof(record));
+
+    fread(rec->surname, sizeof(char), 20, file);
+    fread(rec->initials, sizeof(char), 5, file);
+    fread(&(rec->gender), sizeof(char), 1, file);
+    fread(&(rec->group), sizeof(int), 1, file);
+    fread(&(rec->discrete), sizeof(int), 1, file);
+    fread(&(rec->linal), sizeof(int), 1, file);
+    fread(&(rec->mathan), sizeof(int), 1, file);
+    fread(&(rec->pml), sizeof(int), 1, file);
+    fread(&(rec->english), sizeof(bool), 1, file);
+    fread(&(rec->russian), sizeof(bool), 1, file);
+
+    return rec;
+}
+

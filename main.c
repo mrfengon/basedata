@@ -5,6 +5,7 @@
 
 int main(int argc, char const *argv[])
 {
+    FILE* database_file;
     record* database[20];
     size_t current_size = 0;
     unsigned num;
@@ -19,6 +20,7 @@ int main(int argc, char const *argv[])
     int pml;
     int english;
     int russian;
+    record* rec;
 
     int command;
     while (command != 7) {
@@ -87,10 +89,29 @@ int main(int argc, char const *argv[])
             }
             break;
         case 4:
-            /* code */
+            database_file = fopen("database.bin", "wb");
+            for (size_t i = 0; i < current_size; i++) {
+                save_record_to_file(database[i], database_file);
+            }
+            fclose(database_file);
             break;
         case 5:
-            /* code */
+            // freeing memory to prevent leaks
+            for (size_t i = 0; i < current_size; i++) {
+                free(database[i]);
+            }
+            current_size = 0;
+            
+            database_file = fopen("database.bin", "rb");
+            while (1) {
+                rec = load_record_from_file(database_file);
+                if (!feof(database_file)) {
+                    database[current_size++] = rec;
+                } else {
+                    break;
+                }
+            }
+            fclose(database_file);
             break;
         case 6:
             /* code */
