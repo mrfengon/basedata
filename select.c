@@ -4,6 +4,15 @@
 #include <string.h>
 #include "basedata.h"
 
+int avg_score(record* rec) {
+    return (
+        rec->discrete +
+        rec->linal +
+        rec->mathan +
+        rec->pml
+    ) / 4;
+}
+
 int main(int argc, char const *argv[]) {
     if (argc < 2)
     {
@@ -42,7 +51,42 @@ int main(int argc, char const *argv[]) {
         }
         fclose(database_file);
 
-        // perform query
+        int max_avg_score = 0;
+        for (size_t i = 0; i < current_size; i++)
+        {
+            int avg = avg_score(database[i]);
+            if (avg > max_avg_score) {
+                max_avg_score = avg;
+            }
+        }
+
+        int girls_with_max_avg_by_groups[20] = {
+            0, 0, 0, 0,
+            0, 0, 0, 0,
+            0, 0, 0, 0,
+            0, 0, 0, 0,
+            0, 0, 0, 0
+        };
+        for (size_t i = 0; i < current_size; i++) {
+            if (
+                    (database[i]->gender == 'f')
+                    &&
+                    (avg_score(database[i]) == max_avg_score)
+                ) {
+                girls_with_max_avg_by_groups[i]++;
+            }
+        }
+        
+        int resulting_group = 0;
+        for (size_t i = 1; i < 20; i++)
+        {
+            if (girls_with_max_avg_by_groups[i] >
+                girls_with_max_avg_by_groups[resulting_group]) {
+                resulting_group = i;
+            }
+        }
+        
+        printf("Found group: %d\n", resulting_group);
 
     } else {
         printf("Incorrect parameter.");
