@@ -24,7 +24,7 @@ record *create_record(char *surname, char *initials,
 
 void print_record(record *rec) {
     printf(
-        "\t%s\t|\t%s\t|\t%c\t|\t%d\t|\t%d\t|\t%d\t|\t%d\t|\t%d\t|\t%s\t|\t%s\n",
+        "%s\t|\t%s\t| %c | %d | %d | %d | %d | %d | %s | %s\n",
         rec->surname,
         rec->initials,
         rec->gender,
